@@ -1,0 +1,23 @@
+{
+  "name": "zentrix-hotels",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.12.1",
+  "engines": { "node": ">=22.12.0" },
+  "description": "Global Hotel Marketplace and Hotel Management Platform by ZENTRIX",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @zentrix/web --filter @zentrix/api dev",
+    "dev:ai": "pnpm --filter @zentrix/ai dev",
+    "build": "pnpm -r --if-present build",
+    "lint": "pnpm -r --if-present lint",
+    "test": "pnpm -r --if-present test",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "validate": "pnpm lint && pnpm typecheck && pnpm test && python scripts/validate_foundation.py",
+    "db:generate": "pnpm --filter @zentrix/api db:generate",
+    "db:migrate": "pnpm --filter @zentrix/api db:migrate",
+    "db:deploy": "pnpm --filter @zentrix/api db:deploy",
+    "infra:up": "docker compose -f infrastructure/docker/compose.yaml up -d",
+    "infra:down": "docker compose -f infrastructure/docker/compose.yaml down"
+  },
+  "devDependencies": { "typescript": "~5.8.3" }
+}
